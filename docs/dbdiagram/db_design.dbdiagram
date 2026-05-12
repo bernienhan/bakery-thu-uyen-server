@@ -1,14 +1,247 @@
 {
   "version": "2.0.0",
-  "darkMode": false,
+  "darkMode": true,
   "gridEnabling": false,
   "currentViewName": null,
   "defaultView": {
     "detailLevel": "All",
-    "tablePositions": [],
+    "tablePositions": [
+      {
+        "name": "users",
+        "schemaName": "public",
+        "x": 12,
+        "y": 12
+      },
+      {
+        "name": "user_credentials",
+        "schemaName": "public",
+        "x": 667.4279421248693,
+        "y": -167.58563260221305
+      },
+      {
+        "name": "auth_providers",
+        "schemaName": "public",
+        "x": 518.62841796875,
+        "y": 314
+      },
+      {
+        "name": "login_codes",
+        "schemaName": "public",
+        "x": 518.62841796875,
+        "y": 584
+      },
+      {
+        "name": "roles",
+        "schemaName": "public",
+        "x": 12,
+        "y": 410
+      },
+      {
+        "name": "user_roles",
+        "schemaName": "public",
+        "x": 518.62841796875,
+        "y": 1856
+      },
+      {
+        "name": "refresh_tokens",
+        "schemaName": "public",
+        "x": 518.62841796875,
+        "y": 950
+      },
+      {
+        "name": "email_verification_tokens",
+        "schemaName": "public",
+        "x": 518.62841796875,
+        "y": 1316
+      },
+      {
+        "name": "password_reset_tokens",
+        "schemaName": "public",
+        "x": 518.62841796875,
+        "y": 1586
+      },
+      {
+        "name": "security_events",
+        "schemaName": "public",
+        "x": -132.21768707483,
+        "y": 1975.9501133786848
+      },
+      {
+        "name": "security_blocks",
+        "schemaName": "public",
+        "x": 398.0030525882229,
+        "y": 2032.1859410430839
+      }
+    ],
     "tableGroupCollapseStates": [],
     "stickyNoteLayouts": [],
-    "referencePaths": []
+    "referencePaths": [
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "user_credentials",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "auth_providers",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "login_codes",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "user_roles",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "roles",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "role_id"
+        ],
+        "secondTableName": "user_roles",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "refresh_tokens",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "email_verification_tokens",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "password_reset_tokens",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "security_events",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "security_blocks",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "created_by"
+        ],
+        "secondTableName": "security_blocks",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      }
+    ]
   },
   "views": {}
 }

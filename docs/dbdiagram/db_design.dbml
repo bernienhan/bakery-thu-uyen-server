@@ -1,0 +1,179 @@
+Enum user_status {
+  active
+  inactive
+  banned
+  deleted
+}
+
+Enum login_code_channel {
+  email
+  phone
+}
+
+Table users {
+  id uuid [pk]
+  email varchar(255) [unique]
+  phone varchar(30) [unique]
+  full_name varchar(255)
+  avatar_url text
+  status user_status [not null, default: 'active']
+  email_verified_at timestamp
+  phone_verified_at timestamp
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+}
+
+Table user_credentials {
+  user_id uuid [pk, ref: > users.id]
+  password_hash text [not null]
+  password_changed_at timestamp
+  failed_attempts int [not null, default: 0]
+  locked_until timestamp
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+}
+
+Table auth_providers {
+  id uuid [pk]
+  user_id uuid [not null, ref: > users.id]
+  provider_code varchar(50) [not null]
+  provider_user_id varchar(255) [not null]
+  provider_email varchar(255)
+  created_at timestamp [not null]
+
+  indexes {
+    (provider_code, provider_user_id) [unique]
+    (user_id, provider_code) [unique]
+  }
+}
+
+Table login_codes {
+  id uuid [pk]
+  user_id uuid [ref: > users.id]
+  channel login_code_channel [not null]
+  target varchar(255) [not null]
+  code_hash text [not null]
+  failed_attempts int [not null, default: 0]
+  expires_at timestamp [not null]
+  used_at timestamp
+  created_at timestamp [not null]
+}
+
+Table roles {
+  id uuid [pk]
+  code varchar(50) [not null, unique]
+  name varchar(100) [not null]
+  description text
+  created_at timestamp [not null]
+  updated_at timestamp [not null]
+}
+
+Table user_roles {
+  user_id uuid [not null, ref: > users.id]
+  role_id uuid [not null, ref: > roles.id]
+  assigned_at timestamp [not null]
+
+  indexes {
+    (user_id, role_id) [pk]
+  }
+}
+
+Table refresh_tokens {
+  id uuid [pk]
+  user_id uuid [not null, ref: > users.id]
+  token_hash text [not null, unique]
+  device_name varchar(255)
+  ip_address varchar(50)
+  user_agent text
+  expires_at timestamp [not null]
+  revoked_at timestamp
+  created_at timestamp [not null]
+}
+
+Table email_verification_tokens {
+  id uuid [pk]
+  user_id uuid [not null, ref: > users.id]
+  token_hash text [not null, unique]
+  expires_at timestamp [not null]
+  used_at timestamp
+  created_at timestamp [not null]
+}
+
+Table password_reset_tokens {
+  id uuid [pk]
+  user_id uuid [not null, ref: > users.id]
+  token_hash text [not null, unique]
+  expires_at timestamp [not null]
+  used_at timestamp
+  created_at timestamp [not null]
+}
+
+Table security_events {
+  id uuid [pk]
+
+  user_id uuid [ref: > users.id]
+
+  event_code varchar(100) [not null]
+  // login_failed, login_success, password_locked,
+  // otp_failed, otp_requested, token_revoked, suspicious_activity
+
+  target_type varchar(50)
+  // user, email, phone, ip, device
+
+  target_value varchar(255)
+  // user_id, email, phone number, ip address, device id
+
+  ip_address varchar(50)
+  user_agent text
+
+  metadata json
+  // lưu thêm context nếu cần: provider_code, reason, device_name...
+
+  created_at timestamp [not null]
+
+  indexes {
+    user_id
+    event_code
+    target_value
+    created_at
+  }
+}
+
+Table security_blocks {
+  id uuid [pk]
+
+  user_id uuid [ref: > users.id]
+
+  target_type varchar(50) [not null]
+  // user, email, phone, ip, device
+
+  target_value varchar(255) [not null]
+  // user_id, email, phone, ip, device fingerprint
+
+  reason_code varchar(100) [not null]
+  // too_many_password_attempts,
+  // too_many_otp_requests,
+  // suspicious_ip,
+  // manual_block
+
+  blocked_until timestamp
+  // NULL = block vĩnh viễn hoặc tới khi admin mở
+
+  revoked_at timestamp
+  // có giá trị = đã gỡ block
+
+  created_by uuid [ref: > users.id]
+  // NULL = system tự block
+  // admin_id = admin block thủ công
+
+  created_at timestamp [not null]
+
+  indexes {
+    user_id
+    target_type
+    target_value
+    reason_code
+    blocked_until
+    revoked_at
+  }
+}
