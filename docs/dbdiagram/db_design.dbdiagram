@@ -21,14 +21,14 @@
       {
         "name": "auth_providers",
         "schemaName": "public",
-        "x": 518.62841796875,
-        "y": 314
+        "x": 886.2116096616377,
+        "y": 235.1258738472751
       },
       {
         "name": "login_codes",
         "schemaName": "public",
-        "x": 518.62841796875,
-        "y": 584
+        "x": 807.3374835089126,
+        "y": 566.1417072861756
       },
       {
         "name": "roles",
@@ -237,6 +237,21 @@
           "created_by"
         ],
         "secondTableName": "security_blocks",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "roles",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "role_id"
+        ],
+        "secondTableName": "users",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []

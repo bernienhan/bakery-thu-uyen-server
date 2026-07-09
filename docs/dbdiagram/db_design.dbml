@@ -12,6 +12,7 @@ Enum login_code_channel {
 
 Table users {
   id uuid [pk]
+  role_id uuid [not null, ref: > roles.id]
   email varchar(255) [unique]
   phone varchar(30) [unique]
   full_name varchar(255)
@@ -66,16 +67,6 @@ Table roles {
   description text
   created_at timestamp [not null]
   updated_at timestamp [not null]
-}
-
-Table user_roles {
-  user_id uuid [not null, ref: > users.id]
-  role_id uuid [not null, ref: > roles.id]
-  assigned_at timestamp [not null]
-
-  indexes {
-    (user_id, role_id) [pk]
-  }
 }
 
 Table refresh_tokens {
