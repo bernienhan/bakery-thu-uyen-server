@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class UserMapper {
 
-    public User toDomain(UserJpaEntity entity) {
-        return new User(entity.getId(), entity.getFullName(), entity.getEmail(), entity.getPhone(), Set.of());
-    }
+//    public User toDomain(UserEntity entity) {
+//        return new User(entity.getId(), entity.getFullName(), entity.getEmail(), entity.getPhone(), );
+//    }
 }

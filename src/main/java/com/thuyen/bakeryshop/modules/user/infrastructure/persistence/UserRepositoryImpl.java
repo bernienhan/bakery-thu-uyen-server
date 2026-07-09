@@ -22,4 +22,9 @@ public class UserRepositoryImpl implements UserRepository {
     public User save(User user) {
         return user;
     }
+
+    @Override
+    public Optional<User> findByPhone(String phone) {
+        return Optional.empty();
+    }
 }

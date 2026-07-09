@@ -1,13 +1,19 @@
 package com.thuyen.bakeryshop.modules.user.domain;
 
-import java.util.Set;
+import java.time.Instant;
 import java.util.UUID;
 
 public record User(
         UUID id,
-        String fullName,
+        UUID roleId,
         String email,
         String phone,
-        Set<Role> roles
+        String fullName,
+        String avatarUrl,
+        UserStatus status,
+        Instant emailVerifiedAt,
+        Instant phoneVerifiedAt,
+        Instant createdAt,
+        Instant updatedAt
 ) {
 }
