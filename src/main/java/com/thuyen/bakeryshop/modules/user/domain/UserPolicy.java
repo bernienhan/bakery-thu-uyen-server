@@ -1,5 +1,8 @@
 package com.thuyen.bakeryshop.modules.user.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserPolicy {
 
     public boolean canLogin(User user) {
