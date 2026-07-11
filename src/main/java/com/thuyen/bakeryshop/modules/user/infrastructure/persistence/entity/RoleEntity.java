@@ -1,5 +1,6 @@
 package com.thuyen.bakeryshop.modules.user.infrastructure.persistence.entity;
 
+import com.thuyen.bakeryshop.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -8,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Entity
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class RoleEntity {
+public class RoleEntity extends BaseEntity {
 
     @Id
     private UUID id;
@@ -29,10 +29,4 @@ public class RoleEntity {
 
     @Column(name = "description", columnDefinition = "text")
     private String description;
-
-    @Column(name = "created_at", nullable = false)
-    private Instant createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
 }

@@ -1,5 +1,6 @@
 package com.thuyen.bakeryshop.modules.user.infrastructure.persistence.entity;
 
+import com.thuyen.bakeryshop.common.entity.BaseEntity;
 import com.thuyen.bakeryshop.modules.user.domain.UserStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,7 +23,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserEntity {
+public class UserEntity extends BaseEntity {
 
     @Id
     private UUID id;
@@ -52,10 +53,4 @@ public class UserEntity {
 
     @Column(name = "phone_verified_at")
     private Instant phoneVerifiedAt;
-
-    @Column(name = "created_at", nullable = false)
-    private Instant createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
 }
