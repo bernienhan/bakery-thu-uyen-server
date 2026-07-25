@@ -117,7 +117,7 @@ CREATE TABLE security_events (
     event_code VARCHAR(100) NOT NULL,
     target_type VARCHAR(50),
     target_value VARCHAR(255),
-    ip_address VARCHAR(50),
+    ip_address VARCHAR,
     user_agent TEXT,
     metadata JSONB,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL,

@@ -38,6 +38,9 @@ dependencies {
 
     implementation 'org.flywaydb:flyway-database-postgresql'
 
+    // Redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
     // Monitoring / health check
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
