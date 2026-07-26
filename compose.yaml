@@ -1,0 +1,31 @@
+services:
+  redis:
+    image: redis:8-alpine
+    container_name: redis-local
+
+    ports:
+      - "127.0.0.1:6379:6379"
+
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --requirepass
+      - "${REDIS_PASSWORD}"
+
+    volumes:
+      - redis-data:/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a $$REDIS_PASSWORD ping | grep PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+
+    restart: unless-stopped
+
+volumes:
+  redis-data:

@@ -1,9 +1,14 @@
 package com.thuyen.bakeryshop.modules.user.domain;
 
-import java.util.Set;
+import java.time.Instant;
+import java.util.UUID;
 
 public record Role(
+        UUID id,
+        String code,
         String name,
-        Set<Permission> permissions
+        String description,
+        Instant createdAt,
+        Instant updatedAt
 ) {
 }

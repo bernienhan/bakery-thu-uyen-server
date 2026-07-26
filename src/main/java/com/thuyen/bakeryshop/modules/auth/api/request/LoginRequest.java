@@ -1,4 +1,4 @@
-package com.thuyen.bakeryshop.modules.user.api.request;
+package com.thuyen.bakeryshop.modules.auth.api.request;
 
 public record LoginRequest(
         String email,
