@@ -15,44 +15,38 @@
       {
         "name": "user_credentials",
         "schemaName": "public",
-        "x": 759.47565210742,
-        "y": -272.50022677587253
+        "x": 629.4326201645106,
+        "y": -258.58599627051984
       },
       {
         "name": "auth_providers",
         "schemaName": "public",
-        "x": 807.3374835089126,
-        "y": 297.480774158035
+        "x": 497.76381965327016,
+        "y": 410.7819285728905
       },
       {
         "name": "login_codes",
         "schemaName": "public",
-        "x": 769.7265912579785,
-        "y": 620.5785250177915
+        "x": 852.7304242017884,
+        "y": 84.01020063595854
       },
       {
         "name": "roles",
         "schemaName": "public",
-        "x": -470.01327700539775,
-        "y": -249.18037471374728
-      },
-      {
-        "name": "refresh_tokens",
-        "schemaName": "public",
-        "x": 192.8115909968658,
-        "y": -367.48340146121797
+        "x": -4.614550709573564,
+        "y": -328.2985452786543
       },
       {
         "name": "email_verification_tokens",
         "schemaName": "public",
-        "x": 1286.275256670243,
-        "y": 154.8113767452503
+        "x": 1323.700912738469,
+        "y": 410.7819285728905
       },
       {
         "name": "password_reset_tokens",
         "schemaName": "public",
-        "x": 1263.1990783200122,
-        "y": 501.4419109490776
+        "x": 1323.700912738469,
+        "y": 664.2725914341602
       },
       {
         "name": "security_events",
@@ -63,8 +57,20 @@
       {
         "name": "security_blocks",
         "schemaName": "public",
-        "x": -191.31413294427114,
-        "y": 568.3464187319768
+        "x": -43.541788842345,
+        "y": 616.2725914341602
+      },
+      {
+        "name": "refresh_tokens",
+        "schemaName": "public",
+        "x": 111.43577128416518,
+        "y": 1016.5223190726995
+      },
+      {
+        "name": "auth_sessions",
+        "schemaName": "public",
+        "x": -576.6933403777605,
+        "y": 760.2010167296411
       }
     ],
     "tableGroupCollapseStates": [],
@@ -246,6 +252,51 @@
           "role_id"
         ],
         "secondTableName": "users",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "users",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "user_id"
+        ],
+        "secondTableName": "auth_sessions",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "auth_sessions",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "session_id"
+        ],
+        "secondTableName": "refresh_tokens",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id"
+        ],
+        "firstTableName": "refresh_tokens",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "replaced_by_token_id"
+        ],
+        "secondTableName": "refresh_tokens",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []
