@@ -6,16 +6,13 @@ import com.thuyen.bakeryshop.modules.user.api.request.UpdateProfileRequest;
 import com.thuyen.bakeryshop.modules.user.api.response.UserResponse;
 import com.thuyen.bakeryshop.modules.user.application.UserService;
 import com.thuyen.bakeryshop.modules.user.application.dto.UserProfileDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
+@Tag(name = "User")
 @RequestMapping("/api/v1/users")
 public class UserController {
 

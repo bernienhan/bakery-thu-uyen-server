@@ -9,7 +9,7 @@ import com.thuyen.bakeryshop.common.exception.ApiException;
 import com.thuyen.bakeryshop.common.exception.ErrorCode;
 import com.thuyen.bakeryshop.modules.user.application.dto.UserProfileDto;
 import com.thuyen.bakeryshop.modules.user.application.mapper.UserProfileMapper;
-import com.thuyen.bakeryshop.modules.user.domain.User;
+import com.thuyen.bakeryshop.modules.user.domain.model.User;
 import com.thuyen.bakeryshop.modules.user.domain.UserPolicy;
 import com.thuyen.bakeryshop.modules.user.domain.UserRepository;
 

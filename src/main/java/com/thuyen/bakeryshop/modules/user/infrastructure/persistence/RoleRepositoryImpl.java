@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.thuyen.bakeryshop.modules.user.infrastructure.persistence.mapper.RoleMapper;
 import org.springframework.stereotype.Repository;
 
-import com.thuyen.bakeryshop.modules.user.domain.Role;
+import com.thuyen.bakeryshop.modules.user.domain.model.Role;
 import com.thuyen.bakeryshop.modules.user.domain.RoleRepository;
 
 @Repository

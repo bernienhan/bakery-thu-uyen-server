@@ -1,4 +1,6 @@
-package com.thuyen.bakeryshop.modules.user.domain;
+package com.thuyen.bakeryshop.modules.user.domain.model;
+
+import com.thuyen.bakeryshop.modules.user.domain.UserStatus;
 
 import java.time.Instant;
 import java.util.UUID;

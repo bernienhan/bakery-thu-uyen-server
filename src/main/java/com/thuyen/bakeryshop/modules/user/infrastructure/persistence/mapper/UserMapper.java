@@ -1,6 +1,6 @@
 package com.thuyen.bakeryshop.modules.user.infrastructure.persistence.mapper;
 
-import com.thuyen.bakeryshop.modules.user.domain.User;
+import com.thuyen.bakeryshop.modules.user.domain.model.User;
 import com.thuyen.bakeryshop.modules.user.infrastructure.persistence.entity.RoleEntity;
 import com.thuyen.bakeryshop.modules.user.infrastructure.persistence.entity.UserEntity;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,6 @@
 package com.thuyen.bakeryshop.modules.user.domain;
 
+import com.thuyen.bakeryshop.modules.user.domain.model.User;
 import org.springframework.stereotype.Component;
 
 @Component

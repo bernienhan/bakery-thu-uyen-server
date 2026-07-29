@@ -1,7 +1,7 @@
 package com.thuyen.bakeryshop.modules.user.application.mapper;
 
 import com.thuyen.bakeryshop.modules.user.application.dto.UserProfileDto;
-import com.thuyen.bakeryshop.modules.user.domain.User;
+import com.thuyen.bakeryshop.modules.user.domain.model.User;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,5 +1,7 @@
 package com.thuyen.bakeryshop.modules.user.domain;
 
+import com.thuyen.bakeryshop.modules.user.domain.model.User;
+
 import java.util.Optional;
 import java.util.UUID;
 

@@ -8,7 +8,7 @@ import com.thuyen.bakeryshop.modules.user.infrastructure.persistence.entity.User
 import com.thuyen.bakeryshop.modules.user.infrastructure.persistence.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
-import com.thuyen.bakeryshop.modules.user.domain.User;
+import com.thuyen.bakeryshop.modules.user.domain.model.User;
 import com.thuyen.bakeryshop.modules.user.domain.UserRepository;
 
 @Repository
