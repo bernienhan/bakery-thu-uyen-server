@@ -6,7 +6,8 @@ import java.util.UUID;
 
 public record UserResponse(
         UUID id,
-        UUID roleId,
+        String roleCode,
+        String roleName,
         String fullName,
         String email,
         String phone,

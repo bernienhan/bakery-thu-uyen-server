@@ -162,11 +162,13 @@ public class AuthService {
         AuthSession savedSession = authSessionRepository.save(session);
         cacheSession(savedSession);
         saveLoginEvent(user.id(), dto.identifier(), ipAddress, userAgent, true);
+        Role userRole = roleRepository.findById(user.roleId())
+                .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
 
         return new LoginResult(
                 savedSession.id(),
                 savedSession.expiresAt(),
-                userProfileMapper.toDto(user)
+                userProfileMapper.toDto(user, userRole)
         );
     }
 

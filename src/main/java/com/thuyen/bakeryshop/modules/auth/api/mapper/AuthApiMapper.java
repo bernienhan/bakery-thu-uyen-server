@@ -37,8 +37,6 @@ public class AuthApiMapper {
 
     public LoginResponse toResponse(LoginResult result) {
         return new LoginResponse(
-                result.sessionId(),
-                result.expiresAt(),
                 userResponseMapper.toResponse(result.user())
         );
     }

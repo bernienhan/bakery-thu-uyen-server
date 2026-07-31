@@ -10,7 +10,8 @@ public class UserResponseMapper {
     public UserResponse toResponse(UserProfileDto profile) {
         return new UserResponse(
                 profile.id(),
-                profile.roleId(),
+                profile.roleCode(),
+                profile.roleName(),
                 profile.fullName(),
                 profile.email(),
                 profile.phone(),
