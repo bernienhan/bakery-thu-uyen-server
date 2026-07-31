@@ -2,6 +2,7 @@ package com.thuyen.bakeryshop.modules.auth.api;
 
 import com.thuyen.bakeryshop.common.constant.ApiV1Paths;
 import com.thuyen.bakeryshop.common.response.ApiResponse;
+import com.thuyen.bakeryshop.common.response.SuccessCode;
 import com.thuyen.bakeryshop.modules.auth.api.mapper.AuthApiMapper;
 import com.thuyen.bakeryshop.modules.auth.api.request.RegisterRequest;
 import com.thuyen.bakeryshop.modules.auth.application.AuthService;
@@ -32,6 +33,6 @@ public class AuthController {
     @PostMapping(ApiV1Paths.Auth.REGISTER)
     public ResponseEntity<ApiResponse<Void>> register(@Valid @RequestBody RegisterRequest request) {
         authService.register(authApiMapper.toDto(request));
-        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.ok(null));
+        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.ok(SuccessCode.REGISTER_SUCCESS, null));
     }
 }
