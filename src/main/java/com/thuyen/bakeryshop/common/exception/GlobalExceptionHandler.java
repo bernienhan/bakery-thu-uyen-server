@@ -10,11 +10,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ApiException.class)
     public ResponseEntity<ApiResponse<Void>> handleApiException(ApiException exception) {
-        return ResponseEntity.badRequest().body(ApiResponse.error(exception.getErrorCode().getMessage()));
+        ErrorCode errorCode = exception.getErrorCode();
+        return ResponseEntity.badRequest().body(ApiResponse.error(errorCode.getCode(), errorCode.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleException(Exception exception) {
-        return ResponseEntity.internalServerError().body(ApiResponse.error(ErrorCode.INTERNAL_ERROR.getMessage()));
+        ErrorCode errorCode = ErrorCode.INTERNAL_ERROR;
+        return ResponseEntity.internalServerError().body(ApiResponse.error(errorCode.getCode(), errorCode.getMessage()));
     }
 }

@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Service
 public class AuthService {
-    private static final String DEFAULT_CUSTOMER_ROLE_CODE = "CUSTOMER";
+    private static final String DEFAULT_USER_ROLE_CODE = "USER";
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -45,13 +45,18 @@ public class AuthService {
                     throw new ApiException(ErrorCode.EMAIL_ALREADY_EXISTS);
                 });
 
-        Role customerRole = roleRepository.findByCode(DEFAULT_CUSTOMER_ROLE_CODE)
+        userRepository.findByPhone(command.phone()).ifPresent(user -> {
+            throw new ApiException(ErrorCode.PHONE_ALREADY_EXISTS);
+        });
+
+
+        Role userRole = roleRepository.findByCode(DEFAULT_USER_ROLE_CODE)
                 .orElseThrow(() -> new ApiException(ErrorCode.DEFAULT_ROLE_NOT_FOUND));
 
         Instant now = Instant.now();
         User user = new User(
                 UUID.randomUUID(),
-                customerRole.id(),
+                userRole.id(),
                 command.email(),
                 command.phone(),
                 command.fullName(),
