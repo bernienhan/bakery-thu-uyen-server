@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnTransformer;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -44,6 +45,7 @@ public class AuthSessionEntity extends BaseEntity {
     private String deviceName;
 
     @Column(name = "ip_address", columnDefinition = "inet")
+    @ColumnTransformer(write = "?::inet")
     private String ipAddress;
 
     @Column(name = "user_agent", columnDefinition = "text")

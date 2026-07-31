@@ -1,8 +1,13 @@
 package com.thuyen.bakeryshop.modules.auth.api.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record LoginRequest(
-        String phone,
-        String email,
-        String password
+        @NotBlank
+        String identifier,
+        @NotBlank
+        String password,
+        String deviceId,
+        String deviceName
 ) {
 }

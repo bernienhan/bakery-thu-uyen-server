@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -37,6 +38,7 @@ public class SecurityEventEntity {
     private String targetValue;
 
     @Column(name = "ip_address", columnDefinition = "inet")
+    @ColumnTransformer(write = "?::inet")
     private String ipAddress;
 
     @Column(name = "user_agent", columnDefinition = "text")
