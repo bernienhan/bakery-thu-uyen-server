@@ -2,10 +2,12 @@ package com.thuyen.bakeryshop.modules.auth.api.mapper;
 
 import com.thuyen.bakeryshop.modules.auth.api.request.LoginRequest;
 import com.thuyen.bakeryshop.modules.auth.api.request.RegisterRequest;
+import com.thuyen.bakeryshop.modules.auth.api.request.UpdateMeRequest;
 import com.thuyen.bakeryshop.modules.auth.api.response.LoginResponse;
 import com.thuyen.bakeryshop.modules.auth.application.dto.LoginDto;
 import com.thuyen.bakeryshop.modules.auth.application.dto.LoginResult;
 import com.thuyen.bakeryshop.modules.auth.application.dto.RegisterDto;
+import com.thuyen.bakeryshop.modules.auth.application.dto.UpdateMeDto;
 import com.thuyen.bakeryshop.modules.user.api.mapper.UserResponseMapper;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +34,13 @@ public class AuthApiMapper {
                 request.password(),
                 request.deviceId(),
                 request.deviceName()
+        );
+    }
+
+    public UpdateMeDto toDto(UpdateMeRequest request) {
+        return new UpdateMeDto(
+                request.fullName(),
+                request.phone()
         );
     }
 

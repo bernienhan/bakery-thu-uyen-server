@@ -7,6 +7,7 @@ import com.thuyen.bakeryshop.modules.auth.application.cache.CachedAuthSession;
 import com.thuyen.bakeryshop.modules.auth.application.dto.LoginDto;
 import com.thuyen.bakeryshop.modules.auth.application.dto.LoginResult;
 import com.thuyen.bakeryshop.modules.auth.application.dto.RegisterDto;
+import com.thuyen.bakeryshop.modules.auth.application.dto.UpdateMeDto;
 import com.thuyen.bakeryshop.modules.auth.domain.AuthSessionRepository;
 import com.thuyen.bakeryshop.modules.auth.domain.SecurityEventRepository;
 import com.thuyen.bakeryshop.modules.auth.domain.UserCredentialRepository;
@@ -18,6 +19,7 @@ import com.thuyen.bakeryshop.modules.auth.domain.model.UserCredential;
 import com.thuyen.bakeryshop.modules.user.domain.RoleRepository;
 import com.thuyen.bakeryshop.modules.user.domain.UserPolicy;
 import com.thuyen.bakeryshop.modules.user.domain.UserStatus;
+import com.thuyen.bakeryshop.modules.user.application.dto.UserProfileDto;
 import com.thuyen.bakeryshop.modules.user.application.mapper.UserProfileMapper;
 import com.thuyen.bakeryshop.modules.user.domain.model.Role;
 import com.thuyen.bakeryshop.modules.user.domain.model.User;
@@ -172,6 +174,51 @@ public class AuthService {
         );
     }
 
+    public UserProfileDto me(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApiException(ErrorCode.USER_NOT_FOUND));
+        return userProfileMapper.toDto(user, findUserRole(user));
+    }
+
+    @Transactional
+    public UserProfileDto updateMe(UUID userId, UpdateMeDto dto) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ApiException(ErrorCode.USER_NOT_FOUND));
+
+        if (!userPolicy.canUpdateProfile(user)) {
+            throw loginStatusError(user);
+        }
+
+        String newPhone = dto.phone() != null ? dto.phone() : user.phone();
+        String newFullName = dto.fullName() != null ? dto.fullName() : user.fullName();
+
+        if (newPhone != null && !newPhone.equals(user.phone())) {
+            userRepository.findByPhone(newPhone).ifPresent(existingUser -> {
+                if (!existingUser.id().equals(user.id())) {
+                    throw new ApiException(ErrorCode.PHONE_ALREADY_EXISTS);
+                }
+            });
+        }
+
+        Instant now = Instant.now();
+        User updatedUser = new User(
+                user.id(),
+                user.roleId(),
+                user.email(),
+                newPhone,
+                newFullName,
+                user.avatarUrl(),
+                user.status(),
+                user.emailVerifiedAt(),
+                user.phoneVerifiedAt(),
+                user.createdAt(),
+                now
+        );
+
+        User savedUser = userRepository.save(updatedUser);
+        return userProfileMapper.toDto(savedUser, findUserRole(savedUser));
+    }
+
     private Optional<User> findUserByIdentifier(String identifier) {
         if (isEmail(identifier)) {
             return userRepository.findByEmail(identifier);
@@ -227,5 +274,10 @@ public class AuthService {
             case DELETED -> new ApiException(ErrorCode.USER_DELETED);
             case ACTIVE -> new ApiException(ErrorCode.INVALID_CREDENTIALS);
         };
+    }
+
+    private Role findUserRole(User user) {
+        return roleRepository.findById(user.roleId())
+                .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND));
     }
 }
