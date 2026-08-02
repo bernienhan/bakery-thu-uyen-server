@@ -10,6 +10,7 @@ public enum ErrorCode {
     VALIDATION_FAILED("COMMON_004", "Validation failed"),
     UNAUTHORIZED("COMMON_005", "Unauthorized"),
     FORBIDDEN("COMMON_006", "Forbidden"),
+    TOO_MANY_REQUESTS("COMMON_007", "Too many requests"),
 
     EMAIL_ALREADY_EXISTS("AUTH_001", "Email already exists"),
     PHONE_ALREADY_EXISTS("AUTH_002", "Phone already exists"),

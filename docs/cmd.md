@@ -23,3 +23,4 @@ CLIENT INFO
 
 SCAN 0 MATCH * COUNT 100
 GET key:cad2e849-2a2b-4e37-a169-339172b12b35
+GET bakery-shop:auth:session:7c7def48-64c1-4a92-9bc4-84c4ed64270a
